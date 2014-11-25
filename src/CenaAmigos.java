@@ -1,0 +1,137 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+
+public class CenaAmigos {
+	public static void main (String args[]) throws IOException 	{
+		Scanner sc = new Scanner(System.in);
+
+		int cantidadGramos, cantidadUnidad;
+		ArrayList <Receta> recetas = new ArrayList <Receta> ();
+		String preparacion, nombreIngrediente;
+		boolean enGramos;
+
+		System.out.println("¿Que numero de recetas quiere introducir?");
+		int num_recetas=sc.nextInt();	
+
+		for(int y=0; y<num_recetas; y++) {
+			Receta rece = new Receta();			
+			System.out.println("¿Cual es el nombre de la receta?");
+			rece.setNombreReceta(sc.next());		
+
+			System.out.println("¿Que numero de ingredientes quiere introducir?");
+			int num_ingredientes=sc.nextInt();
+
+			ArrayList <Ingrediente> ingredientes = new ArrayList <Ingrediente> ();
+			for(int i=0; i<num_ingredientes; i++) {
+				Ingrediente ingre = new Ingrediente();
+				cantidadGramos=-1;
+				ingre.setCantidadGramos(cantidadGramos);
+				cantidadUnidad=-1;
+				ingre.setCantidadUnidad(cantidadUnidad);
+
+				System.out.println("¿Cual es el nombre del Ingrediente "+(i+1)+"?");
+				nombreIngrediente=sc.next();
+				ingre.setNombreIngrediente(nombreIngrediente);	
+
+				System.out.println("¿La cantidad del ingrediente es en gramos? si/no");
+				String si_no = sc.next();	
+				while ((si_no!="si")&&(si_no!="no")) {
+					if (si_no == "si") {
+						enGramos = true;
+						ingre.setEnGramos(enGramos);
+					}
+					else if (si_no == "no"){
+						enGramos = false;
+						ingre.setEnGramos(enGramos);
+					}
+					else {
+						System.out.println("Lo siento, intentalo otra vez");
+						System.out.println("¿La cantidad del ingrediente es en gramos? si/no");
+						si_no = sc.next();	
+					}
+				}
+				if (enGramos=true) {
+					System.out.println("¿Cuantos gramos de "+nombreIngrediente+" necesita la  receta?");
+					cantidadGramos=sc.nextInt();
+					ingre.setCantidadGramos(cantidadGramos);
+				}
+				else {
+					System.out.println("¿Cuantas unidades de "+nombreIngrediente+" necesita la  receta?");
+					cantidadUnidad=sc.nextInt();
+					ingre.setCantidadUnidad(cantidadUnidad);
+				}
+
+				ingredientes.add(ingre);
+			}
+			System.out.println("Describe la preparacion separando cada paso por coma: batir huevos, mezclar todo y volcar en la sartén.");
+			preparacion=sc.next();
+			rece.setPreparacion(preparacion);
+			recetas.add(rece);
+
+			File  archivo = new File ("recetario.txt");
+			FileWriter escritor = new FileWriter(archivo);
+
+			for(int k=0; k<recetas.size();k++){
+				Receta recetaObtenida = recetas.get(k);
+				System.out.println("Receta ("+k+"):"+recetaObtenida);
+				String linea = recetaObtenida.getNombreReceta()+";";
+
+				for(int l=0; l<recetaObtenida.getIngredientes().size();l++){
+					linea = linea+recetaObtenida.getIngredientes().getNombreIngrediente(l)+"*"+recetaObtenida.getIngredientes().getCantidadGramos(l)+"*"+recetaObtenida.getIngredientes().getNombreIngrediente(l)+"*"+recetaObtenida.getIngredientes().getNombreIngrediente(l);
+					//escritor.append(ingredientes.get(o).getNombreIngrediente()+"*"+ingredientes.get(o).getCantidadGramos()+"*"+ingredientes.get(o).getCantidadUnidad()+"*"+ingredientes.get(o).getEnGramos()+"#");
+					if (l == recetaObtenida.getIngredientes().size())
+					{	
+						linea = linea+";";
+					}
+					else
+					{	
+						linea = linea+"*";
+					}	
+				}linea = linea +"#";
+				
+				String linea = recetaObtenida.getPreparacion()+";";
+				escritor.append(linea);
+			}
+			escritor.close();
+
+			FileReader fr = new FileReader("listadoPartidos.txt");
+			BufferedReader br = new BufferedReader(fr); 
+			String [] campos = null;
+			System.out.println("\nTus recetas...");
+			String s;
+			while((s = br.readLine()) != null) 
+			{ 
+				campos = s.split(";");
+				System.out.println("--------------------------------");
+				System.out.println("Nombre: "+campos[0]);
+				System.out.println("Descripcion: "+campos[2]);
+				String ingre = campos[1];
+				campos = ingre.split("#");
+				for(int x=0; x<campos.length; x++){
+					String ingreAtribSeparados = campos[x];
+					String [] campos2 = ingreAtribSeparados.split("\\*");
+					System.out.println("Ingredientes: ");
+					System.out.println("Nombre: "+campos2[0]);
+					System.out.println("Gramos: "+campos2[1]);
+					System.out.println("Unidades: "+campos2[2]);
+					System.out.println("--------------------------------");
+					//System.out.println("¿En gramos?: "+campos2[3]);
+				}
+			}
+
+
+
+			// Vaciar el ArrayList
+			ingredientes.clear();
+			recetas.clear();
+
+		}
+
+	}
+}
