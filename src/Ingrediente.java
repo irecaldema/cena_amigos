@@ -36,7 +36,6 @@ public class Ingrediente {
 	public void setEnGramos(boolean enGramos) {
 		this.enGramos = enGramos;
 	}
-
 	public boolean getEnGramos() {
 		return enGramos;
 	}
