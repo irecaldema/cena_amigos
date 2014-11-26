@@ -83,24 +83,24 @@ public class CenaAmigos {
 				String linea = recetaObtenida.getNombreReceta()+";";
 
 				for(int l=0; l<recetaObtenida.getIngredientes().size();l++){
-					linea = linea+recetaObtenida.getIngredientes().getNombreIngrediente(l)+"*"+recetaObtenida.getIngredientes().getCantidadGramos(l)+"*"+recetaObtenida.getIngredientes().getNombreIngrediente(l)+"*"+recetaObtenida.getIngredientes().getNombreIngrediente(l);
+					linea = linea+recetaObtenida.getIngredientes().get(l).getNombreIngrediente()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadGramos()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadUnidad()+"*"+recetaObtenida.getIngredientes().get(l).getEnGramos();
 					//escritor.append(ingredientes.get(o).getNombreIngrediente()+"*"+ingredientes.get(o).getCantidadGramos()+"*"+ingredientes.get(o).getCantidadUnidad()+"*"+ingredientes.get(o).getEnGramos()+"#");
-					if (l == recetaObtenida.getIngredientes().size())
+					if (l == recetaObtenida.getIngredientes().size()-1)
 					{	
-						linea = linea+";";
+						linea = linea + "#";
 					}
 					else
 					{	
-						linea = linea+"*";
+						linea = linea + "*";
 					}	
-				}linea = linea +"#";
+				}linea = linea + ";";
 				
-				String linea = recetaObtenida.getPreparacion()+";";
+				linea = linea + recetaObtenida.getPreparacion() + ";";
 				escritor.append(linea);
 			}
 			escritor.close();
 
-			FileReader fr = new FileReader("listadoPartidos.txt");
+			FileReader fr = new FileReader("recetario.txt");
 			BufferedReader br = new BufferedReader(fr); 
 			String [] campos = null;
 			System.out.println("\nTus recetas...");
@@ -124,14 +124,9 @@ public class CenaAmigos {
 					//System.out.println("¿En gramos?: "+campos2[3]);
 				}
 			}
-
-
-
 			// Vaciar el ArrayList
 			ingredientes.clear();
 			recetas.clear();
-
 		}
-
 	}
 }
