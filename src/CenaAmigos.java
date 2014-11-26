@@ -39,24 +39,24 @@ public class CenaAmigos {
 				nombreIngrediente=sc.next();
 				ingre.setNombreIngrediente(nombreIngrediente);	
 
-				System.out.println("¿La cantidad del ingrediente es en gramos? si/no");
-				String si_no = sc.next();	
-				while ((si_no!="si")&&(si_no!="no")) {
-					if (si_no == "si") {
+				System.out.println("¿La cantidad del ingrediente es en gramos? s/n");
+				char si_no = sc.next().charAt(0);	
+				while ((si_no!='s')&&(si_no!='n')) {
+					if (si_no == 's') {
 						enGramos = true;
 						ingre.setEnGramos(enGramos);
 					}
-					else if (si_no == "no"){
+					else if (si_no == 'n'){
 						enGramos = false;
 						ingre.setEnGramos(enGramos);
 					}
 					else {
 						System.out.println("Lo siento, intentalo otra vez");
 						System.out.println("¿La cantidad del ingrediente es en gramos? si/no");
-						si_no = sc.next();	
+						si_no = sc.next().charAt(0);	
 					}
 				}
-				if (enGramos=true) {
+				if (enGramos==true) {
 					System.out.println("¿Cuantos gramos de "+nombreIngrediente+" necesita la  receta?");
 					cantidadGramos=sc.nextInt();
 					ingre.setCantidadGramos(cantidadGramos);
