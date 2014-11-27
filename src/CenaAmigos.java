@@ -65,10 +65,14 @@ public class CenaAmigos {
 
 				ingredientes.add(ingre);
 			}
+
 			System.out.println("Describe la preparacion separando cada paso por coma: batir huevos, mezclar todo y volcar en la sartén.");
 			preparacion=sc.next();
 			rece.setPreparacion(preparacion);
 			recetas.add(rece);
+			
+			// Vaciar el ArrayList
+			ingredientes.clear();
 		}	
 
 		File  archivo = new File ("recetario.txt");
@@ -93,8 +97,7 @@ public class CenaAmigos {
 			System.out.println("receta guardada");
 		}
 		escritor.close();
-		// Vaciar el ArrayList
-		ingredientes.clear();
+
 
 		FileReader fr = new FileReader("recetario.txt");
 		BufferedReader br = new BufferedReader(fr); 
