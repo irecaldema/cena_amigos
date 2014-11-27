@@ -96,8 +96,11 @@ public class CenaAmigos {
 				linea = linea + recetaObtenida.getPreparacion() + ";";
 				escritor.append(linea);
 			}
+			escritor.close();
+			// Vaciar el ArrayList
+			ingredientes.clear();
 		}	
-		escritor.close();
+		
 
 		FileReader fr = new FileReader("recetario.txt");
 		BufferedReader br = new BufferedReader(fr); 
@@ -124,7 +127,6 @@ public class CenaAmigos {
 			}
 		}
 		// Vaciar el ArrayList
-		ingredientes.clear();
 		recetas.clear();
 	}
 }
