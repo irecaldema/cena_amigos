@@ -80,18 +80,16 @@ public class CenaAmigos {
 				System.out.println("Receta: "+recetaObtenida.getNombreReceta());
 				String linea = recetaObtenida.getNombreReceta()+";";
 
-				for(int l=0; l<recetaObtenida.getIngredientes().size();l++){
-					linea = linea+recetaObtenida.getIngredientes().get(l).getNombreIngrediente()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadGramos()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadUnidad()+"*"+recetaObtenida.getIngredientes().get(l).getEnGramos();
+				for(int l=0; l<ingredientes.size();l++){
+					//linea = linea+recetaObtenida.getIngredientes().get(l).getNombreIngrediente()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadGramos()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadUnidad()+"*"+recetaObtenida.getIngredientes().get(l).getEnGramos();
 					//escritor.append(ingredientes.get(o).getNombreIngrediente()+"*"+ingredientes.get(o).getCantidadGramos()+"*"+ingredientes.get(o).getCantidadUnidad()+"*"+ingredientes.get(o).getEnGramos()+"#");
-					if (l == recetaObtenida.getIngredientes().size()-1)
+					linea = linea+ingredientes.getNombreIngrediente()+"*"+ingredientes.getCantidadGramos()+"*"+ingredientes.getCantidadUnidad()+"*"+ingredientes.getEnGramos();
+					if (l != ingredientes.size()-1)
 					{	
 						linea = linea + "#";
 					}
-					else
-					{	
-						linea = linea + "*";
-					}	
-				}linea = linea + ";";
+				}
+				linea = linea + ";";
 				
 				linea = linea + recetaObtenida.getPreparacion() + ";";
 				escritor.append(linea);
