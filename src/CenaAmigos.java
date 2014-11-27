@@ -54,7 +54,7 @@ public class CenaAmigos {
 						si_no = sc.next().charAt(0);	
 					}
 				}
-				if (ingre.getEnGramos()==true) {
+				if (ingre.getEnGramos()) {
 					System.out.println("¿Cuantos gramos de "+nombreIngrediente+" necesita la  receta?");
 					cantidadGramos=sc.nextInt();
 					ingre.setCantidadGramos(cantidadGramos);
@@ -81,8 +81,6 @@ public class CenaAmigos {
 				String linea = recetaObtenida.getNombreReceta()+";";
 
 				for(int l=0; l<ingredientes.size();l++){
-					//linea = linea+recetaObtenida.getIngredientes().get(l).getNombreIngrediente()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadGramos()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadUnidad()+"*"+recetaObtenida.getIngredientes().get(l).getEnGramos();
-					//escritor.append(ingredientes.get(o).getNombreIngrediente()+"*"+ingredientes.get(o).getCantidadGramos()+"*"+ingredientes.get(o).getCantidadUnidad()+"*"+ingredientes.get(o).getEnGramos()+"#");
 					linea = linea+ingredientes.get(l).getNombreIngrediente()+"*"+ingredientes.get(l).getCantidadGramos()+"*"+ingredientes.get(l).getCantidadUnidad()+"*"+ingredientes.get(l).getEnGramos();
 					if (l != ingredientes.size()-1)
 					{	
