@@ -42,18 +42,15 @@ public class CenaAmigos {
 				System.out.println("¿La cantidad del ingrediente es en gramos? s/n");
 				char si_no = sc.next().charAt(0);
                 while ((si_no!='s')&&(si_no!='n')) {
-					if (si_no == 's') {
-						ingre.setEnGramos(true);System.out.println("true le diste a s");
-					}
-					else if (si_no == 'n'){
-						ingre.setEnGramos(false);System.out.println("false le diste a n");
-					}
-					else {
-						System.out.println("Lo siento, intentalo otra vez");
-						System.out.println("¿La cantidad del ingrediente es en gramos? si/no");
-						si_no = sc.next().charAt(0);	
-					}
-					System.out.println("prueba: "+ingre.getEnGramos());
+					System.out.println("Lo siento, intentalo otra vez");
+					System.out.println("¿La cantidad del ingrediente es en gramos? si/no");
+					si_no = sc.next().charAt(0);	
+				}
+				if (si_no == 's') {
+					ingre.setEnGramos(true);
+				}
+				else if (si_no == 'n'){
+					ingre.setEnGramos(false);
 				}
 				if (ingre.getEnGramos()) {
 					System.out.println("¿Cuantos gramos de "+nombreIngrediente+" necesita la  receta?");
