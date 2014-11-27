@@ -96,35 +96,35 @@ public class CenaAmigos {
 				linea = linea + recetaObtenida.getPreparacion() + ";";
 				escritor.append(linea);
 			}
-			escritor.close();
+		}	
+		escritor.close();
 
-			FileReader fr = new FileReader("recetario.txt");
-			BufferedReader br = new BufferedReader(fr); 
-			String [] campos = null;
-			System.out.println("\nTus recetas...");
-			String s;
-			while((s = br.readLine()) != null) 
-			{ 
-				campos = s.split(";");
+		FileReader fr = new FileReader("recetario.txt");
+		BufferedReader br = new BufferedReader(fr); 
+		String [] campos = null;
+		System.out.println("\nTus recetas...");
+		String s;
+		while((s = br.readLine()) != null) 
+		{ 
+			campos = s.split(";");
+			System.out.println("--------------------------------");
+			System.out.println("Nombre: "+campos[0]);
+			System.out.println("Descripcion: "+campos[2]);
+			String ingre = campos[1];
+			campos = ingre.split("#");
+			for(int x=0; x<campos.length; x++){
+				String ingreAtribSeparados = campos[x];
+				String [] campos2 = ingreAtribSeparados.split("\\*");
+				System.out.println("Ingredientes: ");
+				System.out.println("Nombre: "+campos2[0]);
+				System.out.println("Gramos: "+campos2[1]);
+				System.out.println("Unidades: "+campos2[2]);
 				System.out.println("--------------------------------");
-				System.out.println("Nombre: "+campos[0]);
-				System.out.println("Descripcion: "+campos[2]);
-				String ingre = campos[1];
-				campos = ingre.split("#");
-				for(int x=0; x<campos.length; x++){
-					String ingreAtribSeparados = campos[x];
-					String [] campos2 = ingreAtribSeparados.split("\\*");
-					System.out.println("Ingredientes: ");
-					System.out.println("Nombre: "+campos2[0]);
-					System.out.println("Gramos: "+campos2[1]);
-					System.out.println("Unidades: "+campos2[2]);
-					System.out.println("--------------------------------");
-					//System.out.println("¿En gramos?: "+campos2[3]);
-				}
+				//System.out.println("¿En gramos?: "+campos2[3]);
 			}
-			// Vaciar el ArrayList
-			ingredientes.clear();
-			recetas.clear();
 		}
+		// Vaciar el ArrayList
+		ingredientes.clear();
+		recetas.clear();
 	}
 }
