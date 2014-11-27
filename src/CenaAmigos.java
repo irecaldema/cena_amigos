@@ -77,7 +77,7 @@ public class CenaAmigos {
 
 			for(int k=0; k<recetas.size();k++){
 				Receta recetaObtenida = recetas.get(k);
-				System.out.println("Receta ("+k+"):"+recetaObtenida);
+				System.out.println("Receta ("+k+"):"+recetaObtenida.getNombreReceta());
 				String linea = recetaObtenida.getNombreReceta()+";";
 
 				for(int l=0; l<recetaObtenida.getIngredientes().size();l++){
@@ -95,6 +95,7 @@ public class CenaAmigos {
 				
 				linea = linea + recetaObtenida.getPreparacion() + ";";
 				escritor.append(linea);
+				System.out.println("receta guardada");
 			}
 			escritor.close();
 			// Vaciar el ArrayList
