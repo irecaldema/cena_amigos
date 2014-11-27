@@ -47,10 +47,10 @@ public class CenaAmigos {
 					si_no = sc.next().charAt(0);	
 				}
 				if (si_no == 's') {
-					ingre.setEnGramos(true);
+					ingre.setEnGramos(true);System.out.println("le diste s");
 				}
 				else if (si_no == 'n'){
-					ingre.setEnGramos(false);
+					ingre.setEnGramos(false);System.out.println("Le diste n");
 				}
 				if (ingre.getEnGramos()) {
 					System.out.println("¿Cuantos gramos de "+nombreIngrediente+" necesita la  receta?");
