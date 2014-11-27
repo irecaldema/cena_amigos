@@ -43,10 +43,10 @@ public class CenaAmigos {
 				char si_no = sc.next().charAt(0);
                 while ((si_no!='s')&&(si_no!='n')) {
 					if (si_no == 's') {
-						ingre.setEnGramos(true);
+						ingre.setEnGramos(true);System.out.println("true le diste a s");
 					}
 					else if (si_no == 'n'){
-						ingre.setEnGramos(false);
+						ingre.setEnGramos(false);System.out.println("false le diste a n");
 					}
 					else {
 						System.out.println("Lo siento, intentalo otra vez");
