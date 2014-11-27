@@ -77,7 +77,7 @@ public class CenaAmigos {
 
 			for(int k=0; k<recetas.size();k++){
 				Receta recetaObtenida = recetas.get(k);
-				System.out.println("Receta ("+k+"):"+recetaObtenida.getNombreReceta());
+				System.out.println("Receta: "+recetaObtenida.getNombreReceta());
 				String linea = recetaObtenida.getNombreReceta()+";";
 
 				for(int l=0; l<recetaObtenida.getIngredientes().size();l++){
