@@ -47,10 +47,10 @@ public class CenaAmigos {
 					si_no = sc.next().charAt(0);	
 				}
 				if (si_no == 's') {
-					ingre.setEnGramos(true);System.out.println("le diste s");
+					ingre.setEnGramos(true);
 				}
 				else if (si_no == 'n'){
-					ingre.setEnGramos(false);System.out.println("Le diste n");
+					ingre.setEnGramos(false);
 				}
 				if (ingre.getEnGramos()) {
 					System.out.println("¿Cuantos gramos de "+nombreIngrediente+" necesita la  receta?");
@@ -69,33 +69,32 @@ public class CenaAmigos {
 			preparacion=sc.next();
 			rece.setPreparacion(preparacion);
 			recetas.add(rece);
-
-			File  archivo = new File ("recetario.txt");
-			FileWriter escritor = new FileWriter(archivo);
-
-			for(int k=0; k<recetas.size();k++){
-				Receta recetaObtenida = recetas.get(k);
-				System.out.println("Receta: "+recetaObtenida.getNombreReceta());
-				String linea = recetaObtenida.getNombreReceta()+";";
-
-				for(int l=0; l<ingredientes.size();l++){
-					linea = linea+ingredientes.get(l).getNombreIngrediente()+"*"+ingredientes.get(l).getCantidadGramos()+"*"+ingredientes.get(l).getCantidadUnidad()+"*"+ingredientes.get(l).getEnGramos();
-					if (l != ingredientes.size()-1)
-					{	
-						linea = linea + "#";
-					}
-				}
-				linea = linea + ";";
-				
-				linea = linea + recetaObtenida.getPreparacion() + ";\n";
-				escritor.append(linea);
-				System.out.println("receta guardada");
-			}
-			escritor.close();
-			// Vaciar el ArrayList
-			ingredientes.clear();
 		}	
-		
+
+		File  archivo = new File ("recetario.txt");
+		FileWriter escritor = new FileWriter(archivo);
+
+		for(int k=0; k<recetas.size();k++){
+			Receta recetaObtenida = recetas.get(k);
+			System.out.println("Receta: "+recetaObtenida.getNombreReceta());
+			String linea = recetaObtenida.getNombreReceta()+";";
+
+			for(int l=0; l<ingredientes.size();l++){
+				linea = linea+ingredientes.get(l).getNombreIngrediente()+"*"+ingredientes.get(l).getCantidadGramos()+"*"+ingredientes.get(l).getCantidadUnidad()+"*"+ingredientes.get(l).getEnGramos();
+				if (l != ingredientes.size()-1)
+				{	
+					linea = linea + "#";
+				}
+			}
+			linea = linea + ";";
+			
+			linea = linea + recetaObtenida.getPreparacion() + ";\n";
+			escritor.append(linea);
+			System.out.println("receta guardada");
+		}
+		escritor.close();
+		// Vaciar el ArrayList
+		ingredientes.clear();
 
 		FileReader fr = new FileReader("recetario.txt");
 		BufferedReader br = new BufferedReader(fr); 
