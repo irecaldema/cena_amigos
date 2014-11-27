@@ -83,7 +83,7 @@ public class CenaAmigos {
 				for(int l=0; l<ingredientes.size();l++){
 					//linea = linea+recetaObtenida.getIngredientes().get(l).getNombreIngrediente()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadGramos()+"*"+recetaObtenida.getIngredientes().get(l).getCantidadUnidad()+"*"+recetaObtenida.getIngredientes().get(l).getEnGramos();
 					//escritor.append(ingredientes.get(o).getNombreIngrediente()+"*"+ingredientes.get(o).getCantidadGramos()+"*"+ingredientes.get(o).getCantidadUnidad()+"*"+ingredientes.get(o).getEnGramos()+"#");
-					linea = linea+ingredientes.getNombreIngrediente()+"*"+ingredientes.getCantidadGramos()+"*"+ingredientes.getCantidadUnidad()+"*"+ingredientes.getEnGramos();
+					linea = linea+ingredientes.get(l).getNombreIngrediente()+"*"+ingredientes.get(l).getCantidadGramos()+"*"+ingredientes.get(l).getCantidadUnidad()+"*"+ingredientes.get(l).getEnGramos();
 					if (l != ingredientes.size()-1)
 					{	
 						linea = linea + "#";
