@@ -53,6 +53,7 @@ public class CenaAmigos {
 						System.out.println("¿La cantidad del ingrediente es en gramos? si/no");
 						si_no = sc.next().charAt(0);	
 					}
+					System.out.println("prueba: "+ingre.getEnGramos);
 				}
 				if (ingre.getEnGramos()) {
 					System.out.println("¿Cuantos gramos de "+nombreIngrediente+" necesita la  receta?");
