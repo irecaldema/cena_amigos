@@ -91,7 +91,7 @@ public class CenaAmigos {
 				}
 				linea = linea + ";";
 				
-				linea = linea + recetaObtenida.getPreparacion() + ";";
+				linea = linea + recetaObtenida.getPreparacion() + ";\n";
 				escritor.append(linea);
 				System.out.println("receta guardada");
 			}
