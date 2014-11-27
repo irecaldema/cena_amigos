@@ -85,7 +85,7 @@ public class CenaAmigos {
 
 			for(int l=0; l<recetaObtenida.getIngredientes.size();l++){
 				linea = linea+recetaObtenida.getIngredientes.get(l).getNombreIngrediente()+"*"+recetaObtenida.getIngredientes.get(l).getCantidadGramos()+"*"+recetaObtenida.getIngredientes.get(l).getCantidadUnidad()+"*"+recetaObtenida.getIngredientes.get(l).getEnGramos();
-				if (l != ingredientes.size()-1)
+				if (l != recetaObtenida.getIngredientes.size()-1)
 				{	
 					linea = linea + "#";
 				}
